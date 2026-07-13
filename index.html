@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- EDITAR: nombre real del negocio en title y description -->
+<title>PACKSUR — Envases Plásticos para Alimentos e Industria</title>
+<meta name="description" content="Envases plásticos aptos para alimentos: línea miel, potes, frascos PET, bidones y tapas. Venta mayorista y minorista. Asesoramiento y envíos a todo el país.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Paleta: crema cálida + miel + terracota + oliva + tinta cálida */
+  --crema:#faf5ec;
+  --papel:#fffdf8;
+  --tinta:#2b241a;
+  --tinta-suave:#4a4136;
+  --miel:#d98e04;
+  --miel-claro:#f0b429;
+  --miel-fondo:#f7e8c8;
+  --terracota:#b4572f;
+  --terracota-fondo:#f6e3d8;
+  --oliva:#5f6f3a;
+  --oliva-fondo:#e8ecd8;
+  --gris:#7a7263;
+  --linea:#e8dfcd;
+  --oscuro:#231c12;
+  --oscuro-suave:#332a1d;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Karla',sans-serif;color:var(--tinta);background:var(--crema);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.15;letter-spacing:-.01em}
+h1 em,h2 em{font-style:italic;color:var(--miel)}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1150px;margin:0 auto;padding:0 24px}
+
+/* ===== Header ===== */
+header{position:sticky;top:0;z-index:200;background:rgba(250,245,236,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.45rem;text-decoration:none;color:var(--tinta)}
+.logo span{color:var(--miel);font-style:italic}
+.logo small{display:block;font-family:'JetBrains Mono',monospace;font-size:.55rem;font-weight:400;letter-spacing:.3em;color:var(--gris);text-transform:uppercase}
+.nav ul{display:flex;gap:26px;list-style:none}
+.nav ul a{text-decoration:none;font-size:.92rem;font-weight:600;color:var(--tinta-suave)}
+.nav ul a:hover{color:var(--terracota)}
+.nav-cta{background:var(--miel);color:var(--oscuro);text-decoration:none;font-size:.88rem;font-weight:700;padding:11px 20px;border-radius:99px;transition:background .2s,transform .15s}
+.nav-cta:hover{background:var(--miel-claro);transform:translateY(-1px)}
+.burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--tinta)}
+
+/* ===== Hero con frascos CON y SIN miel ===== */
+.hero{padding:76px 0 60px;position:relative;overflow:hidden;
+  background:
+    radial-gradient(720px 420px at 88% 8%, rgba(240,180,41,.22), transparent 65%),
+    radial-gradient(560px 380px at 2% 92%, rgba(180,87,47,.12), transparent 60%),
+    var(--crema)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+.hero .tag{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terracota);background:var(--terracota-fondo);padding:8px 16px;border-radius:99px;margin-bottom:24px}
+.hero h1{font-size:clamp(2.4rem,5vw,3.7rem);font-weight:700;margin-bottom:20px}
+.hero p{font-size:1.1rem;color:var(--tinta-suave);max-width:33rem;margin-bottom:32px}
+.hero p strong{color:var(--terracota)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.97rem;padding:15px 28px;border-radius:99px;transition:transform .15s,background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-miel{background:var(--miel);color:var(--oscuro)}
+.btn-miel:hover{background:var(--miel-claro)}
+.btn-borde{border:2px solid var(--tinta);color:var(--tinta)}
+.btn-borde:hover{background:var(--tinta);color:var(--crema)}
+
+/* dúo de frascos: con miel / sin miel */
+.duo{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+.duo-card{position:relative;border-radius:16px;overflow:hidden;background:var(--papel);box-shadow:0 22px 50px rgba(43,36,26,.18);border:1px solid var(--linea)}
+.duo-card img{width:100%;aspect-ratio:3/3.9;object-fit:cover}
+.duo-card.con{transform:rotate(-2.2deg) translateY(10px)}
+.duo-card.sin{transform:rotate(2.2deg) translateY(-8px)}
+.duo-tag{position:absolute;left:12px;bottom:12px;right:12px;background:rgba(35,28,18,.88);backdrop-filter:blur(4px);color:#fff;border-radius:10px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+.duo-tag b{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--miel-claro)}
+.duo-tag span{font-size:.72rem;color:rgba(255,255,255,.75)}
+.duo-vs{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:var(--miel);color:var(--oscuro);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:600;letter-spacing:.05em;box-shadow:0 10px 26px rgba(217,142,4,.5);z-index:5;border:3px solid var(--crema)}
+.duo-vs b{font-size:.95rem;line-height:1}
+
+/* barra de datos */
+.datos{background:var(--oscuro);color:var(--crema)}
+.datos-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.dato{padding:28px 18px;text-align:center;border-left:1px solid rgba(255,255,255,.09)}
+.dato:first-child{border-left:none}
+.dato b{display:block;font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:700;color:var(--miel-claro)}
+.dato span{font-size:.78rem;color:rgba(250,245,236,.65);text-transform:uppercase;letter-spacing:.1em}
+
+/* ===== Secciones base ===== */
+section{padding:88px 0}
+.s-head{max-width:640px;margin-bottom:50px}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;display:inline-block;margin-bottom:14px;padding:6px 14px;border-radius:99px}
+.k-miel{color:var(--miel);background:var(--miel-fondo)}
+.k-terra{color:var(--terracota);background:var(--terracota-fondo)}
+.k-oliva{color:var(--oliva);background:var(--oliva-fondo)}
+.s-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:700;margin-bottom:14px}
+.s-head p{color:var(--gris);font-size:1.02rem}
+
+/* ===== Tira de confianza ===== */
+.confianza{background:var(--papel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);padding:34px 0}
+.conf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.conf{display:flex;gap:13px;align-items:flex-start}
+.conf .ci{flex:0 0 42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.15rem}
+.conf:nth-child(1) .ci{background:var(--miel-fondo)}
+.conf:nth-child(2) .ci{background:var(--oliva-fondo)}
+.conf:nth-child(3) .ci{background:var(--terracota-fondo)}
+.conf:nth-child(4) .ci{background:var(--miel-fondo)}
+.conf b{display:block;font-size:.95rem}
+.conf span{font-size:.8rem;color:var(--gris)}
+
+/* ===== Categorías ===== */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cat{background:var(--papel);border:1px solid var(--linea);border-radius:16px;padding:30px 26px;position:relative;transition:transform .18s,box-shadow .18s,border-color .18s}
+.cat:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(43,36,26,.1);border-color:var(--miel)}
+.cat .num{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--miel);display:block;margin-bottom:14px}
+.cat .cap{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;border-radius:5px;padding:4px 10px;display:inline-block;margin-bottom:14px}
+.cat:nth-child(3n+1) .cap{color:var(--miel);background:var(--miel-fondo)}
+.cat:nth-child(3n+2) .cap{color:var(--oliva);background:var(--oliva-fondo)}
+.cat:nth-child(3n) .cap{color:var(--terracota);background:var(--terracota-fondo)}
+.cat h3{font-size:1.25rem;margin-bottom:9px}
+.cat p{font-size:.9rem;color:var(--gris)}
+
+/* ===== Toggle CON/SIN miel (sección firma) ===== */
+.consin{background:var(--oscuro);color:var(--crema);position:relative;overflow:hidden}
+.consin::before{content:'';position:absolute;inset:0;background:radial-gradient(640px 400px at 85% 0%, rgba(240,180,41,.13), transparent 60%)}
+.consin>.wrap{position:relative}
+.consin .s-head h2{color:var(--crema)}
+.consin .s-head p{color:rgba(250,245,236,.65)}
+.toggle-bar{display:flex;justify-content:center;margin-bottom:46px}
+.toggle{display:inline-flex;background:var(--oscuro-suave);border:1px solid rgba(250,245,236,.16);border-radius:99px;padding:5px;gap:4px}
+.toggle button{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;border:none;background:transparent;color:rgba(250,245,236,.6);padding:12px 28px;border-radius:99px;cursor:pointer;transition:all .25s}
+.toggle button.act{background:var(--miel);color:var(--oscuro);font-weight:600}
+.consin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cs-card{background:var(--oscuro-suave);border:1px solid rgba(250,245,236,.11);border-radius:18px;overflow:hidden}
+.cs-card figure{position:relative;aspect-ratio:4/3.4;overflow:hidden}
+.cs-card img{width:100%;height:100%;object-fit:cover;transition:opacity .45s ease}
+.cs-card img.oculta{opacity:0;position:absolute;inset:0}
+.cs-card img.visible{opacity:1;position:absolute;inset:0}
+.cs-card .estado{position:absolute;top:12px;left:12px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;background:rgba(35,28,18,.88);color:var(--miel-claro);padding:6px 12px;border-radius:6px;z-index:2}
+.cs-card .info{padding:20px 22px 24px}
+.cs-card h3{font-size:1.18rem;margin-bottom:6px;color:var(--crema)}
+.cs-card p{font-size:.86rem;color:rgba(250,245,236,.6)}
+.cs-nota{text-align:center;margin-top:36px;font-size:.92rem;color:rgba(250,245,236,.6)}
+.cs-nota b{color:var(--miel-claro)}
+
+/* ===== Línea miel ===== */
+.miel-sec{background:linear-gradient(180deg,var(--miel-fondo),var(--crema))}
+.prods{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.prod{background:var(--papel);border:1px solid var(--linea);border-radius:16px;padding:30px 28px;display:flex;flex-direction:column;position:relative;transition:transform .18s,box-shadow .18s}
+.prod:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(43,36,26,.12)}
+.prod.popular{border:2px solid var(--miel)}
+.prod .pop{position:absolute;top:-13px;left:26px;background:var(--miel);color:var(--oscuro);font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:99px}
+.prod .cc{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.9rem;color:var(--terracota);background:var(--terracota-fondo);display:inline-block;align-self:flex-start;padding:6px 13px;border-radius:7px;margin-bottom:16px}
+.prod h3{font-size:1.3rem;margin-bottom:7px}
+.prod p{font-size:.9rem;color:var(--gris);flex:1}
+.prod .precio{margin-top:20px;padding-top:18px;border-top:1px dashed var(--linea);display:flex;align-items:baseline;justify-content:space-between}
+.prod .precio b{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--tinta)}
+.prod .precio span{font-size:.76rem;color:var(--gris)}
+.miel-aviso{margin-top:28px;font-size:.88rem;color:var(--gris);text-align:center}
+
+/* ===== Calidad ===== */
+.calidad{background:var(--papel)}
+.cal-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:58px;align-items:center}
+.cal-foto{position:relative}
+.cal-foto img{border-radius:18px;aspect-ratio:4/4.4;object-fit:cover}
+.cal-sello{position:absolute;right:-14px;top:26px;background:var(--oliva);color:#fff;border-radius:12px;padding:13px 17px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;line-height:2.1;text-transform:uppercase;box-shadow:0 12px 30px rgba(95,111,58,.4)}
+.cal-item{display:flex;gap:17px;margin-bottom:24px}
+.cal-item .ico{flex:0 0 46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.25rem}
+.cal-item:nth-child(odd) .ico{background:var(--miel-fondo)}
+.cal-item:nth-child(even) .ico{background:var(--oliva-fondo)}
+.cal-item h3{font-size:1.12rem;margin-bottom:4px}
+.cal-item p{font-size:.9rem;color:var(--gris)}
+
+/* ===== Mayorista pasos ===== */
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:paso}
+.paso{background:var(--papel);border:1px solid var(--linea);border-radius:16px;padding:32px 28px;position:relative}
+.paso .n{font-family:'Playfair Display',serif;font-style:italic;font-size:2.6rem;color:var(--miel);line-height:1;display:block;margin-bottom:14px}
+.paso h3{font-size:1.2rem;margin-bottom:9px}
+.paso p{font-size:.9rem;color:var(--gris)}
+
+/* ===== Nosotros / depósito ===== */
+.dep-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.dep-grid>div>p{color:var(--gris);margin-bottom:14px}
+.dep-grid strong{color:var(--terracota)}
+.dep-fotos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dep-fotos img{border-radius:14px;aspect-ratio:3/3.6;object-fit:cover}
+.dep-fotos img:last-child{margin-top:28px}
+.rubros{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.rubro{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--papel);border:1px solid var(--linea);padding:8px 15px;border-radius:99px;color:var(--tinta-suave)}
+.rubro:nth-child(3n+1){border-color:var(--miel);color:var(--miel)}
+.rubro:nth-child(3n+2){border-color:var(--oliva);color:var(--oliva)}
+.rubro:nth-child(3n){border-color:var(--terracota);color:var(--terracota)}
+
+/* ===== Reseñas ===== */
+.resenas{background:var(--papel)}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.res{background:var(--crema);border:1px solid var(--linea);border-radius:16px;padding:28px}
+.res .stars{color:var(--miel);letter-spacing:.18em;margin-bottom:14px}
+.res p{font-size:.93rem;margin-bottom:18px;font-style:italic;color:var(--tinta-suave)}
+.res .quien{display:flex;align-items:center;gap:11px}
+.res .avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:.9rem}
+.res:nth-child(1) .avatar{background:var(--miel)}
+.res:nth-child(2) .avatar{background:var(--oliva)}
+.res:nth-child(3) .avatar{background:var(--terracota)}
+.res b{font-size:.88rem;display:block}
+.res span{font-size:.74rem;color:var(--gris)}
+
+/* ===== FAQ ===== */
+.faq-item{background:var(--papel);border:1px solid var(--linea);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq-item button{width:100%;text-align:left;background:none;border:none;font-family:'Karla',sans-serif;font-size:1.02rem;font-weight:700;padding:21px 56px 21px 24px;cursor:pointer;position:relative;color:var(--tinta)}
+.faq-item button::after{content:'+';position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:1.5rem;font-weight:400;color:var(--miel);transition:transform .25s}
+.faq-item.abierta button::after{transform:translateY(-50%) rotate(45deg)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-body p{padding:0 24px 22px;font-size:.92rem;color:var(--gris)}
+.faq-item.abierta .faq-body{max-height:240px}
+
+/* ===== Visitanos ===== */
+.visita-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px}
+.v-card{background:var(--papel);border:1px solid var(--linea);border-radius:14px;padding:22px 24px;margin-bottom:14px;display:flex;gap:15px}
+.v-card .vi{flex:0 0 42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.v-card:nth-child(1) .vi{background:var(--miel-fondo)}
+.v-card:nth-child(2) .vi{background:var(--oliva-fondo)}
+.v-card:nth-child(3) .vi{background:var(--terracota-fondo)}
+.v-card:nth-child(4) .vi{background:var(--miel-fondo)}
+.v-card b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gris);margin-bottom:2px}
+.mapa{background:var(--papel);border:1px solid var(--linea);border-radius:14px;min-height:300px;display:flex;align-items:center;justify-content:center;color:var(--gris);font-size:.92rem;text-align:center;padding:20px}
+
+/* ===== CTA final ===== */
+.cta-final{background:var(--oscuro);color:var(--crema);text-align:center;position:relative;overflow:hidden}
+.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(600px 380px at 50% 120%, rgba(240,180,41,.2), transparent 65%)}
+.cta-final .wrap{position:relative}
+.cta-final h2{font-size:clamp(2rem,3.8vw,2.8rem);margin-bottom:16px;color:var(--crema)}
+.cta-final p{color:rgba(250,245,236,.68);max-width:34rem;margin:0 auto 32px}
+
+/* ===== Footer ===== */
+footer{background:var(--oscuro);color:rgba(250,245,236,.55);border-top:1px solid rgba(250,245,236,.1);padding:30px 0;font-size:.84rem}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer a{color:var(--miel-claro);text-decoration:none}
+
+/* ===== Chat widget ===== */
+#chat-boton{position:fixed;bottom:24px;right:24px;width:62px;height:62px;border-radius:50%;background:var(--miel);color:var(--oscuro);border:none;font-size:1.5rem;cursor:pointer;box-shadow:0 12px 30px rgba(217,142,4,.5);z-index:900;transition:transform .15s}
+#chat-boton:hover{transform:scale(1.08)}
+#chat-panel{position:fixed;bottom:100px;right:24px;width:min(375px,calc(100vw - 32px));height:530px;max-height:calc(100vh - 132px);background:var(--papel);border-radius:18px;box-shadow:0 26px 70px rgba(35,28,18,.3);display:none;flex-direction:column;overflow:hidden;z-index:901;border:1px solid var(--linea)}
+#chat-panel.abierto{display:flex}
+.chat-top{background:var(--oscuro);color:var(--crema);padding:17px 19px}
+.chat-top b{font-family:'Playfair Display',serif;font-size:1.05rem}
+.chat-top span{display:block;font-size:.76rem;color:var(--miel-claro)}
+#chat-mensajes{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--crema)}
+.msg{max-width:85%;padding:11px 15px;border-radius:14px;font-size:.89rem;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}
+.msg.bot{background:var(--papel);border:1px solid var(--linea);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.usuario{background:var(--miel);color:var(--oscuro);align-self:flex-end;border-bottom-right-radius:4px;font-weight:500}
+.msg.escribiendo{color:var(--gris);font-style:italic;background:var(--papel);border:1px solid var(--linea);align-self:flex-start}
+.chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--linea);background:var(--papel)}
+.chat-form input{flex:1;border:1px solid var(--linea);border-radius:99px;padding:12px 16px;font-size:.9rem;font-family:'Karla',sans-serif;outline:none;background:var(--crema)}
+.chat-form input:focus{border-color:var(--miel)}
+.chat-form button{background:var(--oscuro);color:var(--crema);border:none;border-radius:50%;width:44px;height:44px;font-size:1rem;cursor:pointer;flex:0 0 44px}
+.chat-form button:hover{background:var(--miel);color:var(--oscuro)}
+
+/* ===== Responsive ===== */
+@media (max-width:920px){
+  .hero-grid,.cal-grid,.dep-grid,.visita-grid{grid-template-columns:1fr;gap:38px}
+  .cats,.consin-grid,.prods,.pasos,.res-grid{grid-template-columns:1fr 1fr}
+  .conf-grid,.datos-grid{grid-template-columns:1fr 1fr}
+  .dato{border-left:none;border-top:1px solid rgba(255,255,255,.09)}
+  .duo-card img{aspect-ratio:3/3.2}
+}
+@media (max-width:640px){
+  .nav ul{display:none;position:absolute;top:72px;left:0;right:0;background:var(--papel);flex-direction:column;gap:0;padding:10px 24px 18px;border-bottom:1px solid var(--linea)}
+  .nav ul.abierto{display:flex}
+  .nav ul li{padding:10px 0}
+  .burger{display:block}
+  .cats,.consin-grid,.prods,.pasos,.res-grid,.conf-grid{grid-template-columns:1fr}
+  section{padding:62px 0}
+  .duo{gap:10px}
+  .duo-vs{width:48px;height:48px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <!-- EDITAR: nombre del negocio -->
+    <a class="logo" href="#">Pack<span>sur</span><small>Envases Plásticos</small></a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+    <ul id="menu">
+      <li><a href="#categorias">Envases</a></li>
+      <li><a href="#consin">Con y sin miel</a></li>
+      <li><a href="#linea-miel">Línea Miel</a></li>
+      <li><a href="#mayorista">Mayorista</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+      <li><a href="#visitanos">Visitanos</a></li>
+    </ul>
+    <!-- EDITAR: número de WhatsApp real (formato 549 + área + número, sin espacios) -->
+    <a class="nav-cta" href="https://wa.me/5491100000000?text=Hola,%20quiero%20hacer%20una%20consulta%20por%20envases" target="_blank" rel="noopener">Pedir cotización</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag">◆ Fábrica y distribución · Por mayor y menor</span>
+      <!-- EDITAR: titular -->
+      <h1>El envase justo para tu producto, <em>listo para llenar</em>.</h1>
+      <p>Potes, frascos, bidones y tapas en PP y PET virgen, aptos alimentos. Especialistas en la <strong>línea miel</strong> para apicultores y fraccionadores. Stock permanente y envíos a todo el país.</p>
+      <div class="hero-btns">
+        <a class="btn btn-miel" href="https://wa.me/5491100000000?text=Hola,%20quiero%20cotizar%20envases" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+        <a class="btn btn-borde" href="#categorias">Ver los envases</a>
+      </div>
+    </div>
+    <!-- Dúo hero: el mismo frasco CON y SIN miel -->
+    <div class="duo">
+      <div class="duo-card con">
+        <img src="https://images.pexels.com/photos/8805026/pexels-photo-8805026.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Frasco lleno de miel dorada">
+        <div class="duo-tag"><b>● Con miel</b><span>así lo ve tu cliente</span></div>
+      </div>
+      <div class="duo-vs"><b>↔</b>mismo<br>envase</div>
+      <div class="duo-card sin">
+        <img src="https://images.pexels.com/photos/2147647/pexels-photo-2147647.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Frasco vacío listo para llenar">
+        <div class="duo-tag"><b>○ Sin miel</b><span>así te llega a vos</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- barra de datos — EDITAR: números reales -->
+<div class="datos">
+  <div class="wrap datos-grid">
+    <div class="dato"><b>+15 años</b><span>en el rubro</span></div>
+    <div class="dato"><b>+120</b><span>modelos en stock</span></div>
+    <div class="dato"><b>48 hs</b><span>despacho de pedidos</span></div>
+    <div class="dato"><b>100%</b><span>apto contacto alimentario</span></div>
+  </div>
+</div>
+
+<!-- tira de confianza -->
+<div class="confianza">
+  <div class="wrap conf-grid">
+    <div class="conf"><div class="ci">🍯</div><div><b>Especialistas en miel</b><span>La línea preferida del apicultor</span></div></div>
+    <div class="conf"><div class="ci">🌿</div><div><b>Material virgen</b><span>PP, PET y HDPE de primera</span></div></div>
+    <div class="conf"><div class="ci">🛡️</div><div><b>Libre de BPA</b><span>Con documentación disponible</span></div></div>
+    <div class="conf"><div class="ci">🚚</div><div><b>Envíos al país</b><span>Por expreso, con seguimiento</span></div></div>
+  </div>
+</div>
+
+<!-- ================= CATEGORÍAS ================= -->
+<section id="categorias">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker k-miel">Catálogo</span>
+      <h2>Un envase para <em>cada producto</em></h2>
+      <p>Trabajamos las líneas más pedidas por la industria alimentaria, cosmética y de limpieza. Si no lo ves, preguntanos: lo conseguimos.</p>
+    </div>
+    <div class="cats">
+      <!-- EDITAR: categorías y descripciones según el catálogo real -->
+      <div class="cat"><span class="num">n° 01</span><br><span class="cap">PP · Tapa rosca</span><h3>Línea Miel</h3><p>Potes y frascos de 250 g, 500 g y 1 kg con tapa a rosca y cierre hermético. El clásico del apicultor.</p></div>
+      <div class="cat"><span class="num">n° 02</span><br><span class="cap">PET cristal</span><h3>Frascos y botellas PET</h3><p>Transparencia tipo vidrio, peso mínimo. Ideales para miel líquida, jarabes, aderezos y jugos.</p></div>
+      <div class="cat"><span class="num">n° 03</span><br><span class="cap">PP · Gastronomía</span><h3>Potes gastronómicos</h3><p>Potes con tapa para salsas, dulces y fraccionado, de 150 cc a 1000 cc. Aptos freezer y microondas.</p></div>
+      <div class="cat"><span class="num">n° 04</span><br><span class="cap">HDPE reforzado</span><h3>Bidones y baldes</h3><p>De 1 a 20 litros, con tapa a presión o rosca y manija. Para miel a granel, química y limpieza.</p></div>
+      <div class="cat"><span class="num">n° 05</span><br><span class="cap">Accesorios</span><h3>Tapas, precintos y dosificadores</h3><p>Tapas a rosca y presión, picos vertedores, precintos de seguridad y tapas flip-top.</p></div>
+      <div class="cat"><span class="num">n° 06</span><br><span class="cap">A medida</span><h3>Línea industrial</h3><p>Volúmenes grandes, colores especiales y etiquetado IML. Cotizamos por cantidad y desarrollo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CON Y SIN MIEL (firma de la web) ================= -->
+<section class="consin" id="consin">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker k-miel">Mirá el envase trabajando</span>
+      <h2>El mismo envase, <em>con y sin miel</em></h2>
+      <p>Un buen envase se elige viéndolo lleno. Usá el interruptor y compará cómo luce cada modelo vacío y con producto adentro.</p>
+    </div>
+    <div class="toggle-bar">
+      <div class="toggle" role="tablist">
+        <button id="btn-con" class="act" type="button">● Con miel</button>
+        <button id="btn-sin" type="button">○ Sin miel</button>
+      </div>
+    </div>
+    <div class="consin-grid">
+      <!-- EDITAR: reemplazar por fotos reales de los envases del cliente, llenos y vacíos -->
+      <div class="cs-card">
+        <figure>
+          <span class="estado" data-estado></span>
+          <img class="visible" data-con src="https://images.pexels.com/photos/8805026/pexels-photo-8805026.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Frasco lleno de miel">
+          <img class="oculta" data-sin src="https://images.pexels.com/photos/2147647/pexels-photo-2147647.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Frasco vacío listo para llenar">
+        </figure>
+        <div class="info"><h3>Frasco 500 g · tapa rosca</h3><p>Boca ancha para fraccionar fácil. Cierre hermético que aguanta el transporte.</p></div>
+      </div>
+      <div class="cs-card">
+        <figure>
+          <span class="estado" data-estado></span>
+          <img class="visible" data-con src="https://images.pexels.com/photos/19773739/pexels-photo-19773739.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Envase con miel, detalle del producto">
+          <img class="oculta" data-sin src="https://images.pexels.com/photos/13968287/pexels-photo-13968287.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Envases plásticos vacíos apilados">
+        </figure>
+        <div class="info"><h3>Pote 1 kg · línea apicultor</h3><p>El más vendido de la casa. Paredes firmes, no se deforma al apilar.</p></div>
+      </div>
+      <div class="cs-card">
+        <figure>
+          <span class="estado" data-estado></span>
+          <img class="visible" data-con src="https://images.pexels.com/photos/1872902/pexels-photo-1872902.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Envase transparente lleno de miel dorada">
+          <img class="oculta" data-sin src="https://images.pexels.com/photos/5217783/pexels-photo-5217783.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Variedad de envases plásticos vacíos">
+        </figure>
+        <div class="info"><h3>Línea PET cristal</h3><p>La miel se luce sola: transparencia total y peso mínimo para el envío.</p></div>
+      </div>
+    </div>
+    <p class="cs-nota">¿Fraccionás otro producto? El chat de abajo te recomienda el envase según <b>lo que vayas a llenar</b>.</p>
+  </div>
+</section>
+
+<!-- ================= LÍNEA MIEL ================= -->
+<section class="miel-sec" id="linea-miel">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker k-terra">Los más pedidos</span>
+      <h2>Línea miel: <em>precios por bulto</em></h2>
+      <p>Pensada junto a apicultores. Todos los modelos con tapa incluida y cierre que no gotea.</p>
+    </div>
+    <div class="prods">
+      <!-- EDITAR: productos y precios reales -->
+      <div class="prod"><span class="cc">250 g · PP</span><h3>Pote chico tapa rosca</h3><p>Ideal para degustaciones, ferias y regalos empresariales. Boca ancha.</p><div class="precio"><b>$ [EDITAR]</b><span>bulto x 200 u.</span></div></div>
+      <div class="prod popular"><span class="pop">★ El más vendido</span><span class="cc">1 kg · PP</span><h3>Pote apicultor clásico</h3><p>El estándar del mercado. Apilable, resistente y con precinto opcional.</p><div class="precio"><b>$ [EDITAR]</b><span>bulto x 100 u.</span></div></div>
+      <div class="prod"><span class="cc">500 g · PP</span><h3>Frasco medio tapa rosca</h3><p>El formato equilibrado para venta minorista en dietéticas y almacenes.</p><div class="precio"><b>$ [EDITAR]</b><span>bulto x 150 u.</span></div></div>
+    </div>
+    <p class="miel-aviso">* Precios de referencia por bulto cerrado. Pedí la lista completa actualizada por WhatsApp.</p>
+  </div>
+</section>
+
+<!-- ================= CALIDAD ================= -->
+<section class="calidad" id="calidad">
+  <div class="wrap cal-grid">
+    <div class="cal-foto">
+      <img src="https://images.pexels.com/photos/18631424/pexels-photo-18631424.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Línea de producción de envases plásticos">
+      <div class="cal-sello">APTO ALIMENTOS<br>LIBRE DE BPA<br>MATERIAL VIRGEN</div>
+    </div>
+    <div>
+      <div class="s-head" style="margin-bottom:32px">
+        <span class="kicker k-oliva">Materia prima</span>
+        <h2>Calidad que se nota <em>cuando llenás</em> el envase</h2>
+      </div>
+      <div class="cal-item"><div class="ico">✔️</div><div><h3>Material virgen apto alimentos</h3><p>PP, PET y HDPE de primera calidad, sin recuperado en líneas de contacto alimentario.</p></div></div>
+      <div class="cal-item"><div class="ico">🛡️</div><div><h3>Libre de BPA</h3><p>Toda la línea alimentaria libre de bisfenol A. Documentación disponible para tus habilitaciones.</p></div></div>
+      <div class="cal-item"><div class="ico">💧</div><div><h3>Cierres que no gotean</h3><p>Tapas con doble labio de cierre. La miel viaja segura, sin pérdidas ni sorpresas.</p></div></div>
+      <div class="cal-item"><div class="ico">📦</div><div><h3>Embalaje pensado para el envío</h3><p>Bultos compactos y apilables que bajan el costo de flete por unidad.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAYORISTA ================= -->
+<section id="mayorista">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker k-miel">Compra mayorista</span>
+      <h2>Comprar al por mayor es <em>así de simple</em></h2>
+    </div>
+    <div class="pasos">
+      <div class="paso"><span class="n">1.</span><h3>Contanos qué envasás</h3><p>Por WhatsApp o por el chat de esta web. Te recomendamos modelo, material y tamaño según tu producto.</p></div>
+      <div class="paso"><span class="n">2.</span><h3>Recibí tu cotización</h3><p>Precio por bulto y por cantidad, con el flete calculado a tu localidad. Sin letra chica.</p></div>
+      <div class="paso"><span class="n">3.</span><h3>Despacho en 48 hs</h3><p>Retirá por el depósito o lo enviamos por expreso a todo el país. Seguimiento incluido.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NOSOTROS / DEPÓSITO ================= -->
+<section style="padding-top:0">
+  <div class="wrap dep-grid">
+    <div>
+      <div class="s-head" style="margin-bottom:24px">
+        <span class="kicker k-terra">Nosotros</span>
+        <!-- EDITAR: historia real del negocio -->
+        <h2>Un depósito con <em>stock de verdad</em></h2>
+      </div>
+      <p>Arrancamos hace más de 15 años vendiendo envases para los apicultores de la zona. Hoy abastecemos a fraccionadores, fábricas de alimentos, dietéticas y emprendedores de todo el país, con la misma regla de siempre: <strong>lo que está publicado, está en stock</strong>.</p>
+      <p>Atendemos por mayor y menor, y te asesoramos para que no compres de más ni de menos.</p>
+      <div class="rubros">
+        <span class="rubro">Apicultores</span><span class="rubro">Fraccionadores</span><span class="rubro">Dietéticas</span><span class="rubro">Gastronomía</span><span class="rubro">Cosmética</span><span class="rubro">Limpieza</span><span class="rubro">Emprendedores</span>
+      </div>
+    </div>
+    <div class="dep-fotos">
+      <img src="https://images.pexels.com/photos/5156696/pexels-photo-5156696.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Depósito con estanterías de mercadería">
+      <img src="https://images.pexels.com/photos/4487383/pexels-photo-4487383.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Equipo trabajando en el depósito">
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEÑAS ================= -->
+<section class="resenas">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker k-oliva">Clientes</span>
+      <h2>Los que fraccionan, <em>nos eligen</em></h2>
+    </div>
+    <!-- EDITAR ⚠️ RESEÑAS FICTICIAS DE DEMO: reemplazar por reseñas reales antes de publicar. NUNCA dejar en producción. -->
+    <div class="res-grid">
+      <div class="res"><div class="stars">★★★★★</div><p>"Compro los potes de 1 kg hace años. Nunca un faltante y el cierre no gotea ni con la miel recién fraccionada."</p><div class="quien"><div class="avatar">J</div><div><b>Jorge M.</b><span>Apicultor · Demo</span></div></div></div>
+      <div class="res"><div class="stars">★★★★★</div><p>"Pedí cotización un lunes a la noche por el chat y el miércoles tenía los bultos en el local. Impecables."</p><div class="quien"><div class="avatar">V</div><div><b>Valeria S.</b><span>Dietética · Demo</span></div></div></div>
+      <div class="res"><div class="stars">★★★★★</div><p>"Me asesoraron para pasar del vidrio al PET y bajé el costo de envío a la mitad. Atención de primera."</p><div class="quien"><div class="avatar">M</div><div><b>Martín R.</b><span>Fraccionador · Demo</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap" style="max-width:830px">
+    <div class="s-head">
+      <span class="kicker k-miel">Preguntas frecuentes</span>
+      <h2>Lo que siempre <em>nos preguntan</em></h2>
+    </div>
+    <!-- EDITAR: respuestas con datos reales (mínimos, zonas de envío, medios de pago) -->
+    <div class="faq-item"><button type="button">¿Venden por menor o solo por mayor?</button><div class="faq-body"><p>Las dos cosas. Por menor atendemos en el local, y por mayor con precios por bulto y por cantidad. El mínimo mayorista es de un bulto cerrado por modelo.</p></div></div>
+    <div class="faq-item"><button type="button">¿Los envases son aptos para alimentos?</button><div class="faq-body"><p>Sí. Toda la línea alimentaria es de material virgen apto contacto alimentario y libre de BPA. Si necesitás documentación para bromatología, la pedís y te la mandamos.</p></div></div>
+    <div class="faq-item"><button type="button">¿Hacen envíos al interior?</button><div class="faq-body"><p>Sí, despachamos por expreso a todo el país en un plazo de 48 hs hábiles desde la confirmación del pago, con seguimiento del envío.</p></div></div>
+    <div class="faq-item"><button type="button">¿Qué envase me conviene para miel?</button><div class="faq-body"><p>Depende de cómo la vendas: para venta minorista el pote PP de 500 g o 1 kg con tapa rosca; si querés que se luzca el color de la miel, la línea PET cristal. El chat de la web te ayuda a elegir.</p></div></div>
+    <div class="faq-item"><button type="button">¿Puedo pedir colores o tapas especiales?</button><div class="faq-body"><p>Sí, para pedidos por cantidad cotizamos colores especiales, tapas personalizadas y etiquetado. Consultá mínimos por WhatsApp.</p></div></div>
+  </div>
+</section>
+
+<!-- ================= VISITANOS ================= -->
+<section id="visitanos" style="padding-top:0">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker k-terra">Dónde estamos</span>
+      <h2>Visitanos o <em>escribinos</em></h2>
+    </div>
+    <div class="visita-grid">
+      <div>
+        <!-- EDITAR: dirección, horarios y teléfono reales -->
+        <div class="v-card"><div class="vi">📍</div><div><b>Dirección</b>Av. [EDITAR] 1234, [EDITAR: Localidad], Buenos Aires</div></div>
+        <div class="v-card"><div class="vi">🕒</div><div><b>Horarios</b>Lunes a viernes de 8 a 17 hs · Sábados de 9 a 13 hs</div></div>
+        <div class="v-card"><div class="vi">📱</div><div><b>WhatsApp</b>11 [EDITAR] — respondemos en el día</div></div>
+        <div class="v-card"><div class="vi">✉️</div><div><b>Email</b>[EDITAR]@[EDITAR].com.ar</div></div>
+      </div>
+      <!-- EDITAR: reemplazar por iframe de Google Maps con la ubicación real -->
+      <div class="mapa">📍 Acá va el mapa de Google Maps<br>con la ubicación real del local</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="cta-final">
+  <div class="wrap">
+    <h2>Tu producto merece <em>un buen envase</em>.</h2>
+    <p>Contanos qué envasás y te cotizamos hoy. Stock real, despacho en 48 hs y asesoramiento sin cargo.</p>
+    <a class="btn btn-miel" href="https://wa.me/5491100000000?text=Hola,%20quiero%20cotizar%20envases%20para%20mi%20producto" target="_blank" rel="noopener">Cotizar ahora por WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <!-- EDITAR: nombre del negocio -->
+    <span>© 2026 Packsur — Envases Plásticos. Todos los derechos reservados.</span>
+    <span>Sitio creado por <a href="https://instagram.com/flowbitai" target="_blank" rel="noopener">FlowbitAI</a></span>
+  </div>
+</footer>
+
+<!-- ================= CHAT ================= -->
+<button id="chat-boton" aria-label="Abrir chat">💬</button>
+<div id="chat-panel" role="dialog" aria-label="Chat de asistencia">
+  <div class="chat-top"><b>Asistente de Packsur</b><span>● En línea · responde al instante</span></div>
+  <div id="chat-mensajes"></div>
+  <form class="chat-form" id="chat-form">
+    <input id="chat-input" type="text" placeholder="Ej: ¿qué envase me sirve para miel?" maxlength="500" autocomplete="off">
+    <button type="submit" aria-label="Enviar">➤</button>
+  </form>
+</div>
+
+<script>
+/* ===== Menú mobile ===== */
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>menu.classList.toggle('abierto'));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('abierto')));
+
+/* ===== Toggle CON/SIN miel ===== */
+const btnCon=document.getElementById('btn-con'),btnSin=document.getElementById('btn-sin');
+function setEstado(conMiel){
+  btnCon.classList.toggle('act',conMiel);
+  btnSin.classList.toggle('act',!conMiel);
+  document.querySelectorAll('.cs-card').forEach(card=>{
+    const iCon=card.querySelector('[data-con]'),iSin=card.querySelector('[data-sin]'),tag=card.querySelector('[data-estado]');
+    iCon.className=conMiel?'visible':'oculta';
+    iSin.className=conMiel?'oculta':'visible';
+    tag.textContent=conMiel?'● CON MIEL':'○ SIN MIEL · LISTO PARA LLENAR';
+  });
+}
+btnCon.addEventListener('click',()=>setEstado(true));
+btnSin.addEventListener('click',()=>setEstado(false));
+setEstado(true);
+
+/* ===== FAQ acordeón ===== */
+document.querySelectorAll('.faq-item button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const item=b.parentElement,abierta=item.classList.contains('abierta');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('abierta'));
+    if(!abierta)item.classList.add('abierta');
+  });
+});
+
+/* ===== Chatbot ===== */
+const chatBoton=document.getElementById('chat-boton'),chatPanel=document.getElementById('chat-panel'),
+      chatForm=document.getElementById('chat-form'),chatInput=document.getElementById('chat-input'),
+      chatMensajes=document.getElementById('chat-mensajes');
+let historial=[]; // capado a 10 mensajes (5 idas y vueltas)
+let chatAbierto=false;
+
+chatBoton.addEventListener('click',()=>{
+  chatAbierto=!chatAbierto;
+  chatPanel.classList.toggle('abierto',chatAbierto);
+  chatBoton.textContent=chatAbierto?'✕':'💬';
+  if(chatAbierto&&chatMensajes.children.length===0){
+    agregarMensaje('bot','Hola, soy el asistente de Packsur. Contame qué producto querés envasar y te recomiendo el envase justo. También te puedo pasar info de envíos, mínimos y horarios.');
+  }
+  if(chatAbierto)chatInput.focus();
+});
+
+/* Render seguro: SIEMPRE textContent, nunca innerHTML */
+function agregarMensaje(tipo,texto){
+  const div=document.createElement('div');
+  div.className='msg '+tipo;
+  div.textContent=texto;
+  chatMensajes.appendChild(div);
+  chatMensajes.scrollTop=chatMensajes.scrollHeight;
+  return div;
+}
+
+chatForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const texto=chatInput.value.trim();
+  if(!texto)return;
+  chatInput.value='';
+  agregarMensaje('usuario',texto);
+  historial.push({role:'user',content:texto});
+  if(historial.length>10)historial=historial.slice(-10);
+  const espera=agregarMensaje('escribiendo','Escribiendo…');
+  try{
+    const res=await fetch('/.netlify/functions/chat',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({historial})
+    });
+    const data=await res.json();
+    espera.remove();
+    if(res.ok&&data.respuesta){
+      agregarMensaje('bot',data.respuesta);
+      historial.push({role:'assistant',content:data.respuesta});
+      if(historial.length>10)historial=historial.slice(-10);
+    }else{
+      agregarMensaje('bot',data.error||'Uy, tuve un problema. Probá de nuevo o escribinos por WhatsApp.');
+    }
+  }catch(err){
+    espera.remove();
+    agregarMensaje('bot','No pude conectarme. Revisá tu conexión o escribinos directo por WhatsApp.');
+  }
+});
+</script>
+</body>
+</html>
